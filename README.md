@@ -1,6 +1,9 @@
-### Hi there 👋
+You have stumbled upon this page, which brings you ... nothing. At all.
 
 <!--
+
+### Hi there 👋
+
 **jreutimann/jreutimann** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
 Here are some ideas to get you started:
