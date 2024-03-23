@@ -5,7 +5,6 @@
 @import 'https://fonts.bunny.net/css?family=Lato:400,900|Roboto+Mono:400,700&display=swap';
 @import '~highlight.js/styles/sunburst';
 
-
 h1 {
     color: #57a7b1;
     position: absolute;
@@ -91,6 +90,22 @@ svg[id^="mermaid-"] {
     max-height: 600px;
 }
 
+
+.fs16 {
+   font-size: 16px 
+}
+
+.fs20 {
+   font-size: 20px 
+}
+
+.fs24 {
+   font-size: 24px 
+}
+
+.fs32 {
+   font-size: 32px 
+}
 
 .box {
     display: block;

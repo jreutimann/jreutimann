@@ -477,6 +477,8 @@ The status codes are divided into five categories.
 ---
 # Conventions
 
+<br><br>
+
 ![center](img/8548d48e6a39d71ba0d24935f33d3123.jpg)
 
 ---
@@ -580,7 +582,6 @@ POST /device-management/managed-devices/{id}/executing-scripts // POST request w
 <br>
 We use a mixture of snake_case and camelCase in our APIs.
 
-No established industry standard exists, but many popular Internet companies prefer snake_case: e.g. Zalando, GitHub, Stack Exchange, Twitter. Others, like Google and Amazon, prefer camelCase.
 
 - camelCase seem natural in Java & JavaScript
 - snake_case might be better suited for case insensitive languages like Delphi
@@ -588,7 +589,10 @@ No established industry standard exists, but many popular Internet companies pre
 <br>
 <div class="box">
 
-We should decide on a JSON property naming convention for PDEV.
+Thou shalt use camelCase! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  [API+Development+and+Documentation](https://polypoint.atlassian.net/wiki/spaces/PGA/pages/3872888105/API+Development+and+Documentation)
+<div class="fs20">
+https://polypoint.atlassian.net/wiki/spaces/PGA/pages/3872888105/API+Development+and+Documentation
+</div>
 </div>
 
 ---
@@ -755,33 +759,133 @@ GET https://shared-services.polypoint.ch/api/salaries?mitarbeiter=12
 # Security
 ## OAuth2
 
-![center](img/oauth2.png)
+<div class="box">
+
+The **OAuth 2.0 authorization framework** is a protocol that allows a user to **grant a third-party web site or application access to the user's protected resources**, without necessarily revealing their long-term credentials or even their identity.
+</div>
 
 ---
 # Security
 ## OAuth2
 
-![center height:450px](img/oauth-2-flow-diagram.webp)
+<br><br><br>
+
+![center height:500px](img/oauth2-flow.png)
+
+---
+# Security
+## OpenID Connect (OIDC)
+
+<div class="box">
+
+**OpenID Connect** is a simple **identity layer on top of the OAuth 2.0 protocol**.
+
+OIDC is used for **authentication** as it augments OAuth 2.0 by adding standard identity tokens. It can be used for SSO.
+
+OIDC uses **JWT** (JSON Web Tokens) to represent claims about the authenticated user. 
+
+</div>
+
+---
+# Security
+## OpenID Connect (OIDC)
+
+<br>
+
+![center width:700px](img/acfwpkce.png)
+
+---
+# Security
+## JWT (JSON Web Token - "dʒɒt")
+
+<div class="box">
+
+JSON Web Token (JWT) defines a compact way for securely transmitting information between parties as a JSON object. 
+This information **can be verified and trusted** because it is **digitally signed.**
+
+</div>
+
+---
+# Security
+## JWT (JSON Web Token - "dʒɒt")
+
+JSON Web Tokens consist of three parts separated by dots (.): 
+`header.payload.signature`
+
+These parts are individual JSON objects which are then *Base64Url* encoded
+
+---
+# Security
+## JWT - Example PolyId Access Token:
+
+<style scoped> 
+p {
+  margin-top: 80px;
+  font-size: 12px; 
+}
+</style>
+
+eyJhbGciOiJSUzI1NiIsImtpZCI6ImM5NTcxNTFmLWUwNTItNGMyYS1hZTJhLTBmNzJkYjdiZmEyOSIsInR5cCI6IkpXVCJ9
+.
+eyJhdWQiOlsiaHR0cHM6Ly9jdC1wb21hLXdlYmFwcC5rOHMucG9seXBvaW50LWRldi5jb20vaGVhbHRoLXByb2Zlc3Npb25hbC1hcHAvIl0sImNsaWVudF9pZCI6IjBmNTZmNGYyLTY3OWEtNGI0Yi1hZjMwLThhMmZiZThjMGY2MCIsImV4cCI6MTcxMTE5Nzc5NSwiZXh0Ijp7ImVtYWlsIjoiamFuLnJldXRpbWFubkBnbWFpbC5jb20iLCJmYW1pbHlfbmFtZSI6IlJlbm5oYXJkIiwiZ2l2ZW5fbmFtZSI6IkFuZHJlYSIsImlkIjoiY3QtemluYy1tYXN0ZXIyLXRlc3RfNTI3MmZkYjItNmI1MC00NDZjLTk4NzQtZWMxMzJlZjg2ZGQzIiwibG9jYWxlIjoiZGUiLCJwZXBfZGF0YSI6eyJwZXBfZW1wbG95ZWVfaWQiOiIzNzY4IiwicGVwX2VtcGxveW1lbnRzIjpbeyJjb2xvciI6IiNFODZDMEUiLCJlbXBsb3ltZW50X251bWJlciI6IjAxIiwiZW5kX2RhdGUiOlsyOTk5LDEyLDMxXSwiaWQiOiI0NDU4Iiwic3RhcnRfZGF0ZSI6WzIwMTQsMiwxXX1dLCJwZXBfcGVybWlzc2lvbnMiOnsicG9vbCI6eyJib29rX3Bvb2xfZW1wbG95ZWUiOmZhbHNlLCJtYW5hZ2VfcG9vbHMiOmZhbHNlfSwicmVzb3VyY2VfcmVwbGFjZW1lbnQiOnsic3RhcnRfcmVzb3VyY2VfcmVwbGFjZW1lbnQiOmZhbHNlfSwic2NoZWR1bGluZ19yZXF1ZXN0Ijp7ImNyZWF0ZV9zY2hlZHVsaW5nX3JlcXVlc3QiOnRydWUsImRlbGV0ZV9zY2hlZHVsaW5nX3JlcXVlc3QiOnRydWV9LCJzaGlmdF90cmFkZSI6eyJhcHByb3ZlX3NoaWZ0X3RyYWRlIjpmYWxzZSwic3VibWl0X3NoaWZ0X3RyYWRlIjp0cnVlfSwidGltZV9yZWNvcmRpbmciOnsiYWxsb3dfdGltZV9zdGFtcHMiOmZhbHNlLCJjYW5fY3JlYXRlX2Jsb2NrcyI6ZmFsc2UsImNhbl9kZWxldGVfYmxvY2tzIjpmYWxzZSwiY2FuX3VwZGF0ZV9ibG9ja3MiOmZhbHNlLCJlbmFibGVkIjpmYWxzZX19fSwicHJlZmVycmVkX3VzZXJuYW1lIjoicmVuYW4iLCJwcm92aWRlcklkIjo5NSwicHJvdmlkZXJOYW1lIjp7ImRlIjoiY3QtemluYy1tYXN0ZXIyLXRlc3QiLCJlbiI6ImN0LXppbmMtbWFzdGVyMi10ZXN0IiwiZnIiOiJjdC16aW5jLW1hc3RlcjItdGVzdCIsIml0IjoiY3QtemluYy1tYXN0ZXIyLXRlc3QifSwicm9sZXMiOlsiUk9MRV9IRUFMVEhfUFJPRkVTU0lPTkFMIiwiUk9MRV9URU5BTlRfQURNSU4iXSwic2lkIjoiMWUyNDY1YTktZGI0ZS00MTdmLTg4YjEtYjcwMGJlOWVjNmQ0Iiwic3ViIjoiMjU0LjUyNzJmZGIyLTZiNTAtNDQ2Yy05ODc0LWVjMTMyZWY4NmRkMyIsInRlbmFudEV4cCI6MS43MTExOTQ0OTNlKzA5LCJ0ZW5hbnRJZCI6ImN0LXppbmMtbWFzdGVyMi10ZXN0IiwidGVuYW50X2lzc3VlciI6Imh0dHBzOi8vY3QtemluYy1tYXN0ZXIyLWlkbS5wb2x5cG9pbnQuZGV2OjgzODMvYXV0aC9yZWFsbXMvUE9MWVAwMSIsInRlbmFudF9zdWJqZWN0IjoiNTI3MmZkYjItNmI1MC00NDZjLTk4NzQtZWMxMzJlZjg2ZGQzIiwidGVzdGVyIjpmYWxzZX0sImlhdCI6MTcxMTE5NDE5NSwiaXNzIjoiaHR0cHM6Ly9jdC1wb2x5aWQuazhzLnBvbHlwb2ludC1kZXYuY29tIiwianRpIjoiNGI3NmZiZDctNzYxMi00MzVlLWIzNDgtMzhiMWM3ZDk0MzkxIiwibmJmIjoxNzExMTk0MTk1LCJzY3AiOlsib3BlbmlkIl0sInN1YiI6IjI1NC41MjcyZmRiMi02YjUwLTQ0NmMtOTg3NC1lYzEzMmVmODZkZDMifQ
+.
+vHFYWMSOmYQz7SX7R_FKgVQbpp-kekPzYtwnIahdGZfRrNV-4KKdTlbv0uFjiMq7v0mn5v3Q3d4Rp5T6SJUbS2Qz0CuxbW4mkGO6hJ9e236P5_GCJFodyK7a-b3759pEMlKzs2zV4KYo7qoyYMPdiyAieS-KFYFST_fcbIm1Oqw4a_VQhytezmA72ohptNzJ9KeiVhEIyP97ACiANHnkGLyMISXGaH-EyZEeJZyJ7mXIMChFy3QjSjvfKUO7Re-Lat5DF5WOJxGW1wkyXrw3S7i0zE4wAIbNpmGf0SlSDCqo-fpLFoH5CAD8v_917rmX9armKrt1hRaOJlBoE-M5cKtSa5pVMl23PUKWZuJ9INKgnStdxRa303p8UzgJ2IR9KI1Hn6QKBHSx56edqvRfvnCl2IraajfTfnB3SMcSWhGxlUIG3TwB0mCSbiUGbDj1B4FqQJGarfT_vqpIPb8yrNYwM-3LWaa_xqiDisCXO9joJOWVHNAA5VR9_Smnxzc24i31hgVTLWwwFe_2Li4YK_9fMG5ClVZn7yX4tD1UQ-fnR62UqSeezgRaII3uYxSRfSulfsOZ8VOkmArRqOburf9VQueyzhfqPG3dIPAZgfqSz4AsUq8lY5p2fDu-XEm0Uo8p8J1iHCb6gmZ05nDsQcHYKYUu0PvfxAembr4Y-Kk
 
 
+---
+# Security
+## JWT - Example Payload
+
+<style scoped> pre {  margin-top: 80px;  font-size: 16px; width: 900px} </style>
+
+```json
+{
+  "aud": [
+    "https://ct-poma-webapp.k8s.polypoint-dev.com/health-professional-app/"
+  ],
+  "client_id": "0f56f4f2-679a-4b4b-af30-8a2fbe8c0f60",
+  "exp": 1711197795,
+  "ext": {
+    "email": "jan.reutimann@gmail.com",
+    "family_name": "Rennhard",
+    "given_name": "Andrea",
+    "id": "ct-zinc-master2-test_5272fdb2-6b50-446c-9874-ec132ef86dd3",
+    "locale": "de",
+    "pep_data": {
+      ...
+    },
+    "preferred_username": "renan",
+    ...
+    "roles": [
+      "ROLE_HEALTH_PROFESSIONAL",
+      "ROLE_TENANT_ADMIN"
+    ],
+    "sid": "1e2465a9-db4e-417f-88b1-b700be9ec6d4",
+    ...
+}
+```
+
+---
+# Security
+## HTTP Request with OIDC Access Token
 
 
+<br>
+<br>
+
+![center width:800px](img/SCR-20240323-lsjd.png)
 
 
 
 ---
 
-Security
-  OAuth
-    OIDC
-    JWT
+---
 
 ---
 
 # TODO
 
 - POLYPOINT Error Payload
-- https://polypoint.atlassian.net/wiki/spaces/PGA/pages/3872888105/API+Development+and+Documentation
 - Anatomy of a HTTP request
 
 
