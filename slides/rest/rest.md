@@ -1022,19 +1022,9 @@ vHFYWMSOmYQz7SX7R_FKgVQbpp-kekPzYtwnIahdGZfRrNV-4KKdTlbv0uFjiMq7v0mn5v3Q3d4Rp5T6
 
 ![center width:800px](img/SCR-20240323-lsjd.png)
 
-
-
 ---
 
----
-
----
-
-# TODO
-
-- expand parameters
-
-
+![center width:600px](img/thankyou2.webp)
 
 ---
 
@@ -1043,13 +1033,7 @@ vHFYWMSOmYQz7SX7R_FKgVQbpp-kekPzYtwnIahdGZfRrNV-4KKdTlbv0uFjiMq7v0mn5v3Q3d4Rp5T6
 * https://en.wikipedia.org/wiki/REST
 * https://polypoint.atlassian.net/wiki/spaces/PGA/pages/3872888105/API+Development+and+Documentation
 
----
 
-<style scoped>
-p {
-    font-size: 70px;
-    text-align: center;
-}
-</style>
-
-Thank you!
+### These slides
+* https://jreutimann.github.io/slides/rest
+  
