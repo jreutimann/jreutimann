@@ -23,24 +23,20 @@ footer: RESTful APIs - March 2024
 
 <style scoped>
   li {
-   font-size: 21px
+   font-size: 22px
   }
 </style>
 
 # RESTful APIs - a Refresher
 ## Agenda
-<br>
-<br>
-<br>
-<div class="columns"><div>
+<div class="columns3"><div>
 
-REST
-  + Definition
-  + Maturity Principle
+REST & HTTP
+  + Definition / Maturity Principle
   + REST vs HTTP
-  + Principles
-  + Cacheing
-  + Encoding / Compression
+  + Principles of REST
+  + HTTP Caching
+  + HTTP Encoding / Compression
   + HTTP Response Codes
 
 </div><div>
@@ -51,6 +47,8 @@ Conventions
   + POLYPOINT best practises
   + Versioning
   + Long Running Tasks
+
+</div><div>
 
 Security
   + Considerations
