@@ -155,7 +155,7 @@ POST /slots/1234
 ### Level 2: HTTP verbs & status codes
 
 -  use proper HTTP verbs
--  user correct HTTP status code
+-  use correct HTTP status codes
 
 <style scoped>
   pre {
@@ -166,16 +166,20 @@ POST /slots/1234
 <br>
 
 ```
-POST /slots/1234
+POST /appointments {...}
 
 HTTP/1.1 201 Created
-Location: slots/1234/appointment
+Location: /appointments/1234
 [various headers]
-<appointment>
-  <slot id = "1234" doctor = "mjones" start = "1400" end = "1450"/>
-  <patient id = "jsmith"/>
-</appointment>
-
+{
+  id: "1234",
+  doctor: "mjones",
+  start:  "1400",
+  end: "1450",
+  patient: {
+    id: "jsmith"
+  }
+}
 ```
 
 
@@ -283,7 +287,7 @@ POST /api/authors HTTP/1.1            // request line (method URL protocol)
 Host: myWebApi.com
 Content-Type: application/json        // headers
 Cache-Control: no-cache
-Authorization: Basic YjhiZWU5ZGNiYzgxODhjNlZjE4YjBkOWIwZjdjZTY=
+Authorization: Bearer YjhiZWU5ZGNiYzgxODhjNlZjE4YjBkOWIwZjdjZTY=
 
 {
      "Name": "Felipe Gavilán",        // body ('payload')
@@ -423,8 +427,7 @@ Sample request with _accept-encoding_
 ```
 GET     /employees HTTP/1.1
 Host:   www.some-domain.com
-Accept: text/html
-Accept-Encoding: *
+Accept: application/json
 Accept-Encoding: gzip,compress
 ```
 
@@ -581,7 +584,7 @@ http://api.example.com/device-management/managed-devices/
 http://api.example.com/device-management/managed-devices  /* This is better */
 ```
 
-- Use hyphens (-) to improve the readability of URIs
+- Use hyphens (-) to improve the readability of URIs ("kebab-case")
 ```
 http://api.example.com/devicemanagement/manageddevices/
 http://api.example.com/device-management/managed-devices  /* This is better */
@@ -1027,11 +1030,11 @@ vHFYWMSOmYQz7SX7R_FKgVQbpp-kekPzYtwnIahdGZfRrNV-4KKdTlbv0uFjiMq7v0mn5v3Q3d4Rp5T6
 ---
 
 # WEB Resources
-* https://restfulapi.net
-* https://en.wikipedia.org/wiki/REST
-* https://polypoint.atlassian.net/wiki/spaces/PGA/pages/3872888105/API+Development+and+Documentation
+- https://restfulapi.net
+- https://en.wikipedia.org/wiki/REST
+- https://polypoint.atlassian.net/wiki/spaces/PGA/pages/3872888105/API+Development+and+Documentation
 
 
 ### These slides
-* https://jreutimann.github.io/slides/rest
+- https://jreutimann.github.io/slides/rest
   
