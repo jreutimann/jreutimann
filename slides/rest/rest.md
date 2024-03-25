@@ -37,9 +37,9 @@ footer: RESTful APIs - March 2024
 REST
   + Definition
   + Maturity Principle
+  + REST vs HTTP
   + Principles
   + Cacheing
-  + REST vs HTTP
   + Encoding / Compression
   + HTTP Response Codes
 
@@ -233,6 +233,89 @@ We aim for level 2!
 
 </div>
 
+
+---
+# What is REST?
+## REST vs HTTP
+
+<div class="columns"><div>
+
+### HTTP
+- protocol that defines how messages are formatted and transmitted
+
+</div><div>
+
+### REST
+- architectural style that defines how resources are accessed and manipulated
+- built on HTTP
+
+</div>
+
+---
+# What is REST?
+## REST vs others
+
+<br>
+
+![width:400px left](img/soap-more-polite-rest.jpg)
+![height:400px right](img/GraphQL-1.png)
+
+
+
+---
+# What is REST?
+## REST vs others
+
+### Alternatives
+- **GraphQL** - query language for APIs that allows clients to request and receive only the data they require, making it more efficient than REST
+- **gRPC** - high performance Remote Procedure Call (RPC) framework
+- **WebSocket** - a computer communications protocol, providing simultaneous two-way communication channels over a single Transmission Control Protocol (TCP)
+
+
+---
+# REST
+## Anatomy of a HTTP request
+
+<br>
+<br>
+
+```
+POST /api/authors HTTP/1.1            // request line (method URL protocol)
+
+Host: myWebApi.com
+Content-Type: application/json        // headers
+Cache-Control: no-cache
+Authorization: Basic YjhiZWU5ZGNiYzgxODhjNlZjE4YjBkOWIwZjdjZTY=
+
+{
+     "Name": "Felipe Gavilán",        // body ('payload')
+     "Age": 999
+}
+```
+
+---
+# REST
+## Anatomy of a HTTP response
+
+<br>
+<br>
+
+```
+HTTP/1.1 200 OK                            // status line (code & description)
+
+Date: Thu, 03 Jan 2019 23:26:07 GMT        // headers
+Server: gws
+Accept-Ranges: bytes
+Content-Length: 68894
+Content-Type: text/html; charset=UTF-8
+
+<!doctype html><html …                     // response body
+```
+
+
+
+
+
 ---
 # REST
 ## Principles
@@ -309,8 +392,9 @@ A response should implicitly or explicitly label itself as cacheable or non-cach
 
 ---
 # REST
+## Caching in HTTP
 
-#### Controlling Cache with HTTP headers
+#### Controlling Cache with HTTP Headers
 - Expires
   `Expires: Fri, 20 May 2016 19:20:49 GMT`
 - Cache-Control
@@ -320,46 +404,10 @@ A response should implicitly or explicitly label itself as cacheable or non-cach
 - Last-Modified
   `Last-Modified: Fri, 10 May 2016 09:17:49 GMT`
 
----
-# REST
-## REST vs HTTP
-
-<div class="columns"><div>
-
-### HTTP
-- protocol that defines how messages are formatted and transmitted
-
-</div><div>
-
-### REST
-- architectural style that defines how resources are accessed and manipulated
-- built on HTTP
-
-</div>
 
 ---
 # REST
-## REST vs others
-
-<br>
-
-![width:400px left](img/soap-more-polite-rest.jpg)
-![height:400px right](img/GraphQL-1.png)
-
-
-
----
-# REST
-## REST vs others
-
-### Alternatives
-- **GraphQL** - query language for APIs that allows clients to request and receive only the data they require, making it more efficient than REST
-- **gRPC** - high performance Remote Procedure Call (RPC) framework
-- **WebSocket** - a computer communications protocol, providing simultaneous two-way communication channels over a single Transmission Control Protocol (TCP)
-
----
-# REST
-## Encoding / Compression
+## Encoding / Compression in HTTP
 
 <div class="box">
 
@@ -369,7 +417,7 @@ Compression, like encryption, is something that happens to the resource represen
 
 ---
 # REST
-## Encoding / Compression
+## Encoding / Compression in HTTP
 
 ### Accept-Encoding (client)
 
@@ -384,7 +432,7 @@ Accept-Encoding: gzip,compress
 
 ---
 # REST
-## Encoding / Compression
+## Encoding / Compression in HTTP
 
 ### Content-Encoding (server)
 
@@ -475,6 +523,22 @@ The status codes are divided into five categories.
 | 503 Service Unavailable | The server is not ready to handle the request. |
 
 ---
+# REST
+## HTTP Example Error Payload
+
+ResourceReplacement request
+```JSON
+{
+    "message": "Unauthorized",
+    "error": "Token exchange failure.  Likely expired or invalid token. 
+              Common other problems are incorrect roles or on-prem services that 
+              are not running correctly",
+    "timestamp": "2024-03-25T12:15:32.264+00:00",
+    "status": 401
+}
+```
+
+---
 # Conventions
 
 <br><br>
@@ -538,19 +602,19 @@ http://api.example.com/device-management/managed-devices  /* This is better */
 - Never use CRUD function names in URIs - use HTTP request methods instead
 
 ```
-HTTP GET /device-management/managed-devices          // Get all devices
-HTTP POST /device-management/managed-devices         // Create new Device
+GET /device-management/managed-devices          // Get all devices
+POST /device-management/managed-devices         // Create new Device
 
-HTTP GET /device-management/managed-devices/{id}     // Get device for given Id
-HTTP PUT /device-management/managed-devices/{id}     // Update device for given Id
-HTTP DELETE /device-management/managed-devices/{id}  // Delete device for given Id
+GET /device-management/managed-devices/{id}     // Get device for given Id
+PUT /device-management/managed-devices/{id}     // Update device for given Id
+DELETE /device-management/managed-devices/{id}  // Delete device for given Id
 ```
 
 ---
 # Conventions
 ## Query parameters
 
-- Use query component to filter URI collection
+- Use query parameters to filter URI collection ...
 
 ```
 /device-management/managed-devices
@@ -559,6 +623,87 @@ HTTP DELETE /device-management/managed-devices/{id}  // Delete device for given 
 /device-management/managed-devices?region=CH&brand=xiaomi&sort=installation-date
 /device-management/managed-devices?region=CH&from=2024-03-01&to=2024-03-31
 ```
+
+<br>
+
+- or to define which parts of the resource are relevant:
+
+---
+# Conventions
+## Query parameters
+
+<style scoped> 
+p {
+  font-size: 18px;
+  background: white
+}
+pre {
+  font-size: 15px;
+  width:80%
+}
+</style>
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="columns"><div>
+
+`GET /employees/13423`
+
+```JSON
+{
+  "email_private": null,
+  "email_secure": null,
+  "phone_mobile": null,
+  "phone_private": "044 422 53 10",
+  "phone_number_other": null,
+  "id": 3768,
+  "personnel_number": "293087",
+  "first_name": "Andrea",
+  "last_name": "Rennhard",
+  "date_of_birth": null,
+  "email_business": "renan@zinc.ch"
+}
+```
+
+</div><div>
+
+`GET /employees/13423?includeShiftPlannerPermissions=true`
+
+```JSON
+{
+  "email_private": null,
+  "email_secure": null,
+  "phone_mobile": null,
+  "phone_private": "044 422 53 10",
+  "phone_number_other": null,
+  "shift_planner_permissions": {
+    "shift_trade": {
+      "approve_shift_trade": false
+    },
+    "resource_replacement": {
+      "start_resource_replacement": false
+    },
+    "pool": {
+      "manage_pools": false,
+      "book_pool_employee": false
+    }
+  },
+  "id": 3768,
+  "personnel_number": "293087",
+  "first_name": "Andrea",
+  "last_name": "Rennhard",
+  "date_of_birth": null,
+  "email_business": "renan@zinc.ch"
+}
+```
+
+
+
+</div></div>
+
 
 ---
 # Conventions
@@ -631,8 +776,8 @@ Client asks for specific version. Endpoints will need to serve the payload for d
 Accept-version: v1
 Accept-version: v2
 
-Accept: application/vnd.example.v1+json
-Accept: application/vnd.example+json;version=1.0
+Accept: application/vnd.polypoint.v1+json
+Accept: application/vnd.polypoint+json;version=1.0
 ```
 
 ---
@@ -735,7 +880,7 @@ Each API request should come with some sort of authentication credentials that m
 <br>
 
 - Keep it Simple
-- Always Use HTTPS
+- Always use HTTPS
 - Never expose information on URLs
   - hesitate to expose internal APIs
 
@@ -770,7 +915,8 @@ The **OAuth 2.0 authorization framework** is a protocol that allows a user to **
 
 <br><br><br>
 
-![center height:500px](img/oauth2-flow.png)
+![left height:400px](img/oauth2-flow.png)
+![right height:400px](img/oauth2.png)
 
 ---
 # Security
@@ -788,8 +934,9 @@ OIDC uses **JWT** (JSON Web Tokens) to represent claims about the authenticated 
 
 ---
 # Security
-## OpenID Connect (OIDC)
+## OpenID Connect (OIDC) - example flow
 
+<br>
 <br>
 
 ![center width:700px](img/acfwpkce.png)
@@ -885,8 +1032,7 @@ vHFYWMSOmYQz7SX7R_FKgVQbpp-kekPzYtwnIahdGZfRrNV-4KKdTlbv0uFjiMq7v0mn5v3Q3d4Rp5T6
 
 # TODO
 
-- POLYPOINT Error Payload
-- Anatomy of a HTTP request
+- expand parameters
 
 
 
