@@ -1025,10 +1025,6 @@ vHFYWMSOmYQz7SX7R_FKgVQbpp-kekPzYtwnIahdGZfRrNV-4KKdTlbv0uFjiMq7v0mn5v3Q3d4Rp5T6
 
 ---
 
-![center width:600px](img/thankyou2.webp)
-
----
-
 # WEB Resources
 - https://restfulapi.net
 - https://en.wikipedia.org/wiki/REST
@@ -1037,4 +1033,10 @@ vHFYWMSOmYQz7SX7R_FKgVQbpp-kekPzYtwnIahdGZfRrNV-4KKdTlbv0uFjiMq7v0mn5v3Q3d4Rp5T6
 
 ### These slides
 - https://jreutimann.github.io/slides/rest
-  
+
+### Confluence Q&A Page
+- https://polypoint.atlassian.net/wiki/spaces/Zn2C/pages/12231933984/RESTful+APIs+-+Questions+Answers
+---
+
+![center width:600px](img/thankyou2.webp)
+
